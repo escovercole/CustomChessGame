@@ -5,9 +5,11 @@ let stockfishWorker: Worker | null = null;
 
 export const initializeStockfish = (): Worker => {
   if (!stockfishWorker) {
-    // Ensure `process.env.PUBLIC_URL` is properly typed
-    const publicUrl = import.meta.env.VITE_PUBLIC_URL || '';
-    stockfishWorker = new Worker(`${publicUrl}/stockfish.js`);
+    //const publicUrl = import.meta.env.VITE_PUBLIC_URL || '';
+    //stockfishWorker = new Worker(`${publicUrl}/stockfish.js`);
+    // Wrong way if path is not correct
+    stockfishWorker = new Worker(new URL('./stockfish.js', window.location.href));
+
   }
   return stockfishWorker;
 };
