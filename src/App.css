@@ -1,0 +1,11 @@
+.app-container {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    height: 100vh; /* Full viewport height */
+}
+
+.chessboard-container {
+    max-width: 450px; /* Maximum width of the chessboard */
+    width: 100%; /* Make it responsive */
+}
