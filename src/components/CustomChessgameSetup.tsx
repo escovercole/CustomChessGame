@@ -29,6 +29,12 @@ const CustomChessgameSetup: React.FC = () => {
         }
     };
 
+    const shouldRenderPiece = (piece: string, row: string): boolean => {
+        const isPawn = piece === 'p' || piece === 'P';
+        const isOnEdgeRow = row.indexOf('1') > -1 || row.indexOf('8') > -1;
+    
+        return !(isPawn && isOnEdgeRow);
+    };
 
     return (
         <>
@@ -41,6 +47,7 @@ const CustomChessgameSetup: React.FC = () => {
                 <div className='row my-2'>
                     <div className='col-12 mb-2 d-flex gap-2 flex-wrap'>
                         {['q', 'r', 'b', 'n', 'p'].map((piece) => (
+                        shouldRenderPiece(piece, selectedSquare) &&
                         <button
                             key={piece}
                             className='btn btn-secondary'
@@ -53,6 +60,7 @@ const CustomChessgameSetup: React.FC = () => {
 
                     <div className='col-12 mb-2 d-flex gap-2 flex-wrap'>
                         {['Q', 'R', 'B', 'N', 'P'].map((piece) => (
+                            shouldRenderPiece(piece, selectedSquare) &&
                             <button
                             key={piece}
                             className='btn btn-light'
